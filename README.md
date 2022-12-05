@@ -7,10 +7,10 @@ Points are won or lost based on whether or not the player guessed correctly.
 The project files and folders are organized as follows:
 ```
 hilo
-+-- card
-+-- director
-+-- main
-+-- README.md
+  +-- card
+  +-- director
+  +-- main
+README.md
 ```
 
 ##Required Software
