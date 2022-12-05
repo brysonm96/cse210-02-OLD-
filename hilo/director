@@ -1,1 +1,89 @@
+from game.card import Card
 
+
+class Director:
+
+    def __init__(self):
+        """Constructs a new Director."""
+        
+        self.dice1 = []
+        self.dice2 = []
+        self.is_playing = True
+        self.total_score = 100
+        self.points = 100
+        self.loss = -75
+
+        
+        for i in range(1):
+            card = Card()
+            self.dice1.append(card)
+
+        for i in range(1):
+            card = Card()
+            self.dice2.append(card)
+
+
+    def start_game(self):
+        """Starts the game by running the main game loop."""
+
+        while self.is_playing:
+            self.gameplay()
+
+    def gameplay(self):
+    
+        ################################################################
+
+        if not self.is_playing:
+            return
+
+        #for i in range(len(self.dice1)):
+            #card = self.dice1[i]
+            #card.roll1()
+
+        #for i in range(len(self.dice2)):
+            #card = self.dice2[i]
+            #card.roll2()
+
+        values1 = ""
+        for i in range(len(self.dice1)):
+            card = self.dice1[i]
+            card.roll1()
+            values1 += f"{card.value1} "
+
+        print(f"The first card is: {values1}")
+        guess = input("Next card will be higher or lower? [h/l]")
+
+        values2 = ""
+        for i in range(len(self.dice2)):
+            card = self.dice2[i]
+            card.roll2()
+            values2 += f"{card.value2} "
+
+        print(f"The second card is: {values2}")
+
+
+        #Conditions
+        if (guess == "h"):
+            if (values2 > values1): 
+                self.total_score += self.points
+            elif (values2 < values1):
+                self.total_score += self.loss
+            else: 
+                print("Tie")
+
+        elif (guess == "l"):
+            if (values2 < values1):
+                self.total_score += self.points
+            elif (values2 > values1):
+                self.total_score += self.loss
+            else: 
+                print("Tie")
+        else:
+            print("Try again.")
+
+
+        print(f"Your score is: {self.total_score}\n")
+        self.is_playing == (self.total_score > 0)
+
+        roll_dice = input("Play again? [y/n] ")
+        self.is_playing = (roll_dice == "y")
