@@ -6,7 +6,7 @@ Points are won or lost based on whether or not the player guessed correctly.
 ---
 The project files and folders are organized as follows:
 ```
-main
+hilo
 +-- card
 +-- director
 +-- main
